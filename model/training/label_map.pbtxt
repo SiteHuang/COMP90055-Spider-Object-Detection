@@ -1,0 +1,100 @@
+item {
+  id: 1 
+  name: 'Ant-mimicking Spider'
+}
+
+item {
+  id: 2
+  name: 'Black House Spider'
+}
+
+item {
+  id: 3
+  name: 'Flower Spider'
+}
+
+item {
+  id: 4
+  name: 'Garden Orb-Weaving Spider'
+}
+
+item {
+  id: 5
+  name: 'Huntsman Spider'
+}
+
+item {
+  id: 6
+  name: 'Mouse Spider'
+}
+
+item {
+  id: 7
+  name: 'Recluse Spider'
+}
+
+item {
+  id: 8
+  name: 'Redback Spider'
+}
+
+item {
+  id: 9
+  name: "Saint Andrew\\'s Cross Spider"
+}
+
+item {
+  id: 10
+  name: 'Spiny Spider'
+}
+
+item {
+  id: 11
+  name: 'Spitting Spiderr'
+}
+
+item {
+  id: 12
+  name: 'Funnel-Web Spider'
+}
+
+item {
+  id: 13
+  name: 'Tarantula Spider'
+}
+
+item {
+  id: 14
+  name: 'TrapDoor Spider'
+}
+
+item {
+  id: 15
+  name: 'White-tailed Spider'
+}
+
+item {
+  id: 16
+  name: 'Wolf Spider'
+}
+
+item {
+  id: 17
+  name: 'Yellow Sac Spider'
+}
+
+item {
+  id: 18
+  name: 'Ant'
+}
+
+item {
+  id: 19
+  name: 'Crab'
+}
+
+item {
+  id: 20
+  name: 'Spider man'
+}
+                                          
