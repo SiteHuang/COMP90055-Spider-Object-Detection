@@ -20,5 +20,36 @@ A basic front app for detecting Australian spiders.
 5. **Select a pre-trained model and Modify .config file** Select a pre-trained model from [detection_models](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md) and the corresponding .config file [samples/configs](https://github.com/tensorflow/models/tree/master/research/object_detection/samples/configs). 
 
 ## Training
-1. Clone the repo [models](https://github.com/tensorflow/models). Put the dataset, _.tfrecord_ files, pre-trained model, label_map.pbtxt and _.config_ file in the folder of **models/research/object_detection/legacy/**. Modify _num_classes_, _train_input_path_, _eval_input_path_ and _label_map_path_ in the _.config_ file.
-1. 
+1. Clone the repo [models](https://github.com/tensorflow/models). Put the dataset, _.tfrecord_ files, pre-trained model, and training/(_label_map.pbtxt_ and _.config_) in the folder of **models/research/object_detection/legacy/**. Modify _num_classes_, _train_input_path_, _eval_input_path_ and _label_map_path_ in the _.config_ file.
+1. Start training:
+```
+python train.py --logtostderr --train_dir=YOURPATH/training/ --pipeline_config_path=YOURPATH/ssd_mobilenet_v1_pets.config
+```
+
+## Export Model
+Running the export_inference_graph.py in the foler of models/research/object_detection:
+```
+python export_inference_graph.py \
+    --input_type encoded_image_string_tensor \
+    --pipeline_config_path /YOURPATH/pipeline.config \
+    --trained_checkpoint_prefix /YOURPATH/model.ckpt-YOUR_CHECKPOINT \
+    --output_directory /YOUR_OUTPUT_PATH/
+```
+    
+## Setup Google Cloud Platform
+### Create a new project in [GCP](https://console.cloud.google.com)
+Create a folder **model/** in the storage of GCP. Put the _**saved_model.pb**_ file from previously exported model path into the **model/** directory.
+
+### Deply model in GCloud
+1. Follow the instructions and install the gcloud command [here](https://cloud.google.com/storage/docs/gsutil_install#mac)
+2. Create a gcloud ml-engine model: ```gcloud ml-engine models create MODEL_NAME```
+3. Show the models list: ```gcloud ml-engine models list```
+4. Deploy the model: 
+```
+gcloud ml-engine versions create v1 --model=MODEL_NAME --origin=gs://BUCKET_NAME/model --runtime-version=1.12(tensorflow_running_version)
+```
+
+
+
+
+
