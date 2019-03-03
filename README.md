@@ -9,7 +9,7 @@ A basic front app for detecting Australian spiders.
 
 ## Data Collection and Preprocess
 1. **Data Collection**: _data_process_ folder contains two crawler python file, Flickr image crawler and google image crawler.
-1. **Data Notation**: Once got the dataset, draw the bounding box and and get xml file for each of the images using [Labelimg](https://github.com/tzutalin/labelImg) 
+1. **Data Notation**: Once got the dataset, draw the bounding box and and get xml file for each of the images using [Labelimg](https://github.com/tzutalin/labelImg).
 1. **Generate Test and Train TFRECORD files**: Split the dataset into two groups, test and train. Modifying and running the _xml_to_csv.py_ in _data_process_ folder to get two CSV files, test.csv and train.csv. And then modifying and running the _generate_tfrecord.py_ as well to get corresponding _.tfrecord_ files.
 1. **Create label map** Create a _.pbtxt_ file list all the classes name and format as below:
 
@@ -48,6 +48,29 @@ Create a folder **model/** in the storage of GCP. Put the _**saved_model.pb**_ f
 ```
 gcloud ml-engine versions create v1 --model=MODEL_NAME --origin=gs://BUCKET_NAME/model --runtime-version=1.12(tensorflow_running_version)
 ```
+
+## Setup [Firebase](https://firebase.google.com/) project 
+Setup firebase project linking to your GCP project. And follow the instructions to connect the firebase with your IOS project.
+
+## Deploy Cloud Function
+1. Install [nvm](https://github.com/creationix/nvm/blob/master/README.md) 
+1. Install [Firebase CLI](https://firebase.google.com/docs/cli/)
+1. Run ```npm install``` from the **/firebase/functions/** directory.
+1. Update the params in _index.js_ file with the name of your Cloud project and ML Engine model.
+1. Run ```firebase deploy --only functions```
+1. Once deployed successfully, you can found a cloud function created in the GCP.
+
+## Test Cloud Function
+1. Create a images/ directory in the storage. 
+1. Upload a test image to images/ directory.
+1. If successful, the results of prediction id and confidence will be saved in the Firebase database and the outlined image will be stored in outline_img/ in the storage.
+<p align="center">
+  <img width="800" src="https://github.com/SiteHuang/COMP90055-Spider-Object-Detection/blob/master/images/Picture3.png">
+</p>
+
+
+
+
 
 
 
