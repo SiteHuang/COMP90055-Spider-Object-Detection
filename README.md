@@ -10,7 +10,7 @@ A basic front app for detecting Australian spiders.
 ## Data Collection and Preprocess
 1. **Data Collection**: _data_process_ folder contains two crawler python file, Flickr image crawler and google image crawler.
 1. **Data Notation**: Once got the dataset, draw the bounding box and and get xml file for each of the images using [Labelimg](https://github.com/tzutalin/labelImg).
-1. **Generate Test and Train TFRECORD files**: Split the dataset into two groups, test and train. Modifying and running the _xml_to_csv.py_ in _data_process_ folder to get two CSV files, test.csv and train.csv. And then modifying and running the _generate_tfrecord.py_ as well to get corresponding _.tfrecord_ files.
+1. **Generate Test and Train TFRECORD files**: Split the dataset into two groups, test and train. Modifying and running the _xml_to_csv.py_ in _data_process_ folder to get two CSV files, test.csv and train.csv. And then modifying and running the _generate_tfrecord.py_ as well to get corresponding _.record_ files.
 1. **Create label map** Create a _.pbtxt_ file list all the classes name and format as below:
 
 <p align="center">
